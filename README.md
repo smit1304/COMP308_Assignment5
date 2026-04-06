@@ -27,28 +27,30 @@ The backend handles the API requests and communicates with the local Ollama inst
    cd lab5-summarizer-backend
 Install the required dependencies:
 cd
-Bash
-npm install
+    ```bash
+    npm install
+    
 Start the development server:
 
-Bash
-npm run dev
+    ```bash
+    npm run dev
+
 The server should now be running on http://localhost:5000.
 
 2. Starting the Frontend UI
 The frontend provides the user interface for inputting articles and displaying the generated summaries.
 
 Open a new terminal window and navigate to the frontend directory:
-Bash
-cd frontend
+    ```bash
+    cd frontend
 
 Install the required dependencies:
-Bash
-npm install
+    ```bash
+    npm install
 
 Start the Vite development server:
-Bash
-npm run dev
+    ```bash
+    npm run dev
 
 Open your browser and navigate to the local URL provided by Vite (usually http://localhost:5173/).
 

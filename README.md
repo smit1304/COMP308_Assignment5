@@ -1,4 +1,4 @@
-    # Lab 5: Tech Sustainability Summarizer
+    # AI Article Summarizer
 
 ## Group Members
 * Smit Patel

@@ -68,30 +68,40 @@ Click "Summarize Article" and wait for the AI to process the text and return the
 ### Implementation of the Summarizer
 The application was built using a modernized MERN-stack approach, utilizing ES Modules throughout.
 
-#### Backend Architecture: We implemented an MVC (Model-View-Controller) architecture to keep the code modular and scalable.
+#### Backend Architecture: 
+We implemented an MVC (Model-View-Controller) architecture to keep the code modular and scalable.
 
-#### Routing: summaryRoutes.js intercepts incoming POST requests.
+#### Routing: 
+summaryRoutes.js intercepts incoming POST requests.
 
-#### Controllers: summaryController.js handles the HTTP request/response cycle and error handling.
+#### Controllers: 
+summaryController.js handles the HTTP request/response cycle and error handling.
 
-#### Services: aiService.js manages the direct integration with the ollama npm package.
+#### Services: 
+aiService.js manages the direct integration with the ollama npm package.
 
-#### Prompt Engineering: To ensure high-quality, consistent summaries, we abstracted the AI system instructions into a utils/promptTemplates.js file. The prompt strictly enforces a Markdown template, requiring the AI to categorize its findings into "Environmental Impact" and "Sustainable Solutions," aligning perfectly with the assignment rubric.
+#### Prompt Engineering: 
+To ensure high-quality, consistent summaries, we abstracted the AI system instructions into a utils/promptTemplates.js file. The prompt strictly enforces a Markdown template, requiring the AI to categorize its findings into "Environmental Impact" and "Sustainable Solutions," aligning perfectly with the assignment rubric.
 
 #### Frontend Architecture: The UI was built using React and Vite. We separated the UI into functional components (SummarizerForm and SummaryResult) and abstracted the API fetching logic into a dedicated services/api.js file. Custom CSS variables were used to create a clean, modern, and responsive user interface.
 
 ### Selection of Articles
 Articles were selected based on relevance, recency, and authority. We focused on two primary categories:
 
-#### Impact of Emerging Technologies: We sourced articles from independent, reputable organizations (such as the World Economic Forum and MIT News) to gather unbiased data on the energy and water consumption of modern AI and data centers.
+#### Impact of Emerging Technologies: 
+We sourced articles from independent, reputable organizations (such as the World Economic Forum and MIT News) to gather unbiased data on the energy and water consumption of modern AI and data centers.
 
-#### Sustainable Solutions: We directly referenced the most recent official environmental reports (2024/2025) published by top software makers like Microsoft and Google to analyze their specific mitigation strategies, such as carbon-negative goals and water-positive datacenter cooling innovations.
+#### Sustainable Solutions: 
+We directly referenced the most recent official environmental reports (2024/2025) published by top software makers like Microsoft and Google to analyze their specific mitigation strategies, such as carbon-negative goals and water-positive datacenter cooling innovations.
 
 ### Testing the Solution
 The application underwent several testing phases to ensure reliability:
 
-#### API Integration Testing: We utilized Thunder Client/Postman to send raw text payloads to the Express backend to verify that the Ollama SDK was successfully communicating with the local models and returning data.
+#### API Integration Testing: 
+We utilized Thunder Client/Postman to send raw text payloads to the Express backend to verify that the Ollama SDK was successfully communicating with the local models and returning data.
 
-#### Error Handling Verification: We tested the frontend by submitting empty forms and temporarily stopping the backend server to ensure the UI gracefully displayed appropriate error messages (e.g., "Please paste an article" or "Cannot connect to the backend") without crashing.
+#### Error Handling Verification: 
+We tested the frontend by submitting empty forms and temporarily stopping the backend server to ensure the UI gracefully displayed appropriate error messages (e.g., "Please paste an article" or "Cannot connect to the backend") without crashing.
 
-#### Prompt Adherence Testing: We fed the AI various articles (some heavily focused on impact, others on solutions) to verify that the custom prompt template successfully forced the AI to maintain the required formatting and accurately state "Information not explicitly provided" when data was missing, preventing AI hallucinations.
+#### Prompt Adherence Testing: 
+We fed the AI various articles (some heavily focused on impact, others on solutions) to verify that the custom prompt template successfully forced the AI to maintain the required formatting and accurately state "Information not explicitly provided" when data was missing, preventing AI hallucinations.

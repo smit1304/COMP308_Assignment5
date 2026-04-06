@@ -1,4 +1,3 @@
-// src/components/SummarizerForm.jsx
 import { useState } from 'react';
 
 const SummarizerForm = ({ onSummarize, isLoading }) => {
@@ -11,24 +10,28 @@ const SummarizerForm = ({ onSummarize, isLoading }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="summarizer-form">
+        <form onSubmit={handleSubmit} className="form-container">
             <div className="form-group">
-                <label htmlFor="model-select"><strong>Choose Local Model: </strong></label>
-                <select
-                    id="model-select"
-                    value={model}
-                    onChange={(e) => setModel(e.target.value)}
-                >
-                    <option value="qwen2.5-coder:7b">qwen2.5-coder:7b (Faster)</option>
-                    <option value="qwen2.5-coder:14b">qwen2.5-coder:14b (More Nuanced)</option>
-                </select>
+                <label htmlFor="model-select" className="form-label">Choose Local Model</label>
+                <div className="select-wrapper">
+                    <select
+                        id="model-select"
+                        className="minimal-input"
+                        value={model}
+                        onChange={(e) => setModel(e.target.value)}
+                    >
+                        <option value="qwen2.5-coder:7b">qwen2.5-coder:7b (Faster)</option>
+                        <option value="qwen2.5-coder:14b">qwen2.5-coder:14b (More Nuanced)</option>
+                    </select>
+                </div>
             </div>
 
             <div className="form-group">
+                <label className="form-label">Article Content</label>
                 <textarea
-                    rows="12"
-                    style={{ width: '100%', marginTop: '15px', padding: '10px' }}
-                    placeholder="Paste the article text about sustainability initiatives here..."
+                    rows="6"
+                    className="minimal-input"
+                    placeholder="Paste the emerging tech article here..."
                     value={articleText}
                     onChange={(e) => setArticleText(e.target.value)}
                 />
@@ -37,9 +40,16 @@ const SummarizerForm = ({ onSummarize, isLoading }) => {
             <button 
                 type="submit" 
                 disabled={isLoading}
-                style={{ marginTop: '15px', padding: '10px 20px', cursor: 'pointer' }}
+                className="classic-button"
             >
-                {isLoading ? 'Generating Summary...' : 'Summarize Article'}
+                {isLoading ? (
+                    <>
+                        <span className="spinner"></span>
+                        Generating Summary...
+                    </>
+                ) : (
+                    'Summarize Article'
+                )}
             </button>
         </form>
     );

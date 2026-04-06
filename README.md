@@ -83,7 +83,8 @@ aiService.js manages the direct integration with the ollama npm package.
 #### Prompt Engineering: 
 To ensure high-quality, consistent summaries, we abstracted the AI system instructions into a utils/promptTemplates.js file. The prompt strictly enforces a Markdown template, requiring the AI to categorize its findings into "Environmental Impact" and "Sustainable Solutions," aligning perfectly with the assignment rubric.
 
-#### Frontend Architecture: The UI was built using React and Vite. We separated the UI into functional components (SummarizerForm and SummaryResult) and abstracted the API fetching logic into a dedicated services/api.js file. Custom CSS variables were used to create a clean, modern, and responsive user interface.
+#### Frontend Architecture: 
+The UI was built using React and Vite. We separated the UI into functional components (SummarizerForm and SummaryResult) and abstracted the API fetching logic into a dedicated services/api.js file. Custom CSS variables were used to create a clean, modern, and responsive user interface.
 
 ### Selection of Articles
 Articles were selected based on relevance, recency, and authority. We focused on two primary categories:

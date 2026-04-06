@@ -85,6 +85,29 @@ select.minimal-input {
   background-size: 0.65rem auto;
 }
 
+/* Checkbox Styles */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  gap: 0.5rem;
+}
+
+.checkbox-container input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--text-main);
+}
+
+.checkbox-label {
+  color: var(--text-main);
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+}
+
 /* Classic Button */
 .classic-button {
   width: 100%;
@@ -137,6 +160,46 @@ select.minimal-input {
 }
 
 /* Results Component */
+.summary-result-wrapper {
+  margin-top: 1.5rem;
+}
+
+.summary-result-wrapper .form-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.copy-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: var(--text-main);
+  color: var(--bg-primary);
+  border: 1px solid var(--text-main);
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.copy-button:hover {
+  background: var(--bg-primary);
+  color: var(--text-main);
+}
+
+.copy-button:active {
+  transform: translateY(1px);
+}
+
+.summary-result-wrapper textarea.minimal-input {
+  max-height: 40vh;
+  resize: vertical;
+}
+
 .result-container {
   margin-top: 1.5rem;
   max-height: 40vh;

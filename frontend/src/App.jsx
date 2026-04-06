@@ -8,7 +8,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSummarize = async (articleText, model) => {
+  const handleSummarize = async (articleText, model, customPrompt = null) => {
     if (!articleText) {
       setError('Please paste an article to summarize.');
       return;
@@ -24,7 +24,7 @@ function App() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ articleText, model }),
+        body: JSON.stringify({ articleText, model, customPrompt }),
       });
 
       const data = await response.json();

@@ -27,7 +27,7 @@ The backend handles the API requests and communicates with the local Ollama inst
    ```bash
    cd lab5-summarizer-backend
 Install the required dependencies:
-
+cd
 Bash
 npm install
 Start the development server:

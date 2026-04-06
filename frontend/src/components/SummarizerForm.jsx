@@ -3,10 +3,12 @@ import { useState } from 'react';
 const SummarizerForm = ({ onSummarize, isLoading }) => {
     const [articleText, setArticleText] = useState('');
     const [model, setModel] = useState('qwen2.5-coder:7b');
+    const [useCustomPrompt, setUseCustomPrompt] = useState(false);
+    const [customPrompt, setCustomPrompt] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSummarize(articleText, model);
+        onSummarize(articleText, model, useCustomPrompt ? customPrompt : null);
     };
 
     return (
@@ -36,6 +38,30 @@ const SummarizerForm = ({ onSummarize, isLoading }) => {
                     onChange={(e) => setArticleText(e.target.value)}
                 />
             </div>
+
+            <div className="form-group">
+                <label className="checkbox-container">
+                    <input
+                        type="checkbox"
+                        checked={useCustomPrompt}
+                        onChange={(e) => setUseCustomPrompt(e.target.checked)}
+                    />
+                    <span className="checkbox-label">Use Custom Prompt</span>
+                </label>
+            </div>
+
+            {useCustomPrompt && (
+                <div className="form-group">
+                    <label className="form-label">Custom Prompt</label>
+                    <textarea
+                        rows="4"
+                        className="minimal-input"
+                        placeholder="Enter your custom prompt for summarization..."
+                        value={customPrompt}
+                        onChange={(e) => setCustomPrompt(e.target.value)}
+                    />
+                </div>
+            )}
 
             <button 
                 type="submit" 

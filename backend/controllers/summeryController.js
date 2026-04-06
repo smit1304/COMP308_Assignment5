@@ -3,7 +3,7 @@ import { generateSummary } from '../services/aiService.js';
 
 export const summarizeArticle = async (req, res) => {
     try {
-        const { articleText, model = 'qwen2.5-coder:7b' } = req.body; 
+        const { articleText, model = 'qwen2.5-coder:7b', customPrompt = null } = req.body; 
 
         if (!articleText) {
             return res.status(400).json({ error: 'Please provide the article text to summarize.' });
@@ -12,7 +12,7 @@ export const summarizeArticle = async (req, res) => {
         console.log(`Generating summary using ${model}...`);
 
         // Call the service layer instead of writing logic here
-        const summaryContent = await generateSummary(articleText, model);
+        const summaryContent = await generateSummary(articleText, model, customPrompt);
 
         res.json({ 
             success: true, 

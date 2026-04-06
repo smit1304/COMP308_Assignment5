@@ -2,9 +2,13 @@ const SummaryResult = ({ summary }) => {
     if (!summary) return null;
 
     return (
-        <div className="summary-result">
-            <h2>Summary Result</h2>
-            <div className="summary-text">{summary}</div>
+        <div className="result-container">
+            <div className="result-header">
+                <h2 className="result-title">Summary Result</h2>
+            </div>
+            <div className="result-content">
+                {summary}
+            </div>
         </div>
     );
 };

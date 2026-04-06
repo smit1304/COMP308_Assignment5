@@ -1,16 +1,14 @@
 import { useState } from 'react';
+import SummarizerForm from './components/SummarizerForm';
+import SummaryResult from './components/SummaryResult';
 import './App.css';
 
 function App() {
-  const [articleText, setArticleText] = useState('');
-  const [model, setModel] = useState('qwen2.5-coder:7b');
   const [summary, setSummary] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSummarize = async (e) => {
-    e.preventDefault();
-    
+  const handleSummarize = async (articleText, model) => {
     if (!articleText) {
       setError('Please paste an article to summarize.');
       return;
@@ -21,7 +19,6 @@ function App() {
     setSummary('');
 
     try {
-      // Calling the Express backend we just built
       const response = await fetch('http://localhost:5000/api/summarize', {
         method: 'POST',
         headers: {
@@ -45,50 +42,27 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>Tech Sustainability Summarizer</h1>
-      
-      <form onSubmit={handleSummarize} className="summarizer-form">
-        <div className="form-group">
-          <label htmlFor="model-select"><strong>Choose Local Model: </strong></label>
-          <select
-            id="model-select"
-            value={model}
-            onChange={(e) => setModel(e.target.value)}
-          >
-            <option value="qwen2.5-coder:7b">qwen2.5-coder:7b (Faster)</option>
-            <option value="qwen2.5-coder:14b">qwen2.5-coder:14b (More Nuanced)</option>
-          </select>
-        </div>
-        
-        <div className="form-group">
-          <textarea
-            rows="12"
-            style={{ width: '100%', marginTop: '15px', padding: '10px' }}
-            placeholder="Paste the article text about sustainability initiatives here..."
-            value={articleText}
-            onChange={(e) => setArticleText(e.target.value)}
-          />
-        </div>
-        
-        <button 
-            type="submit" 
-            disabled={isLoading}
-            style={{ marginTop: '15px', padding: '10px 20px', cursor: 'pointer' }}
-        >
-          {isLoading ? 'Generating Summary...' : 'Summarize Article'}
-        </button>
-      </form>
+    <>
+      <div className="app-container">
+        <header className="header">
+          <h1 className="title">AI Article Summarizer</h1>
+          <p className="subtitle">AI-powered insights for tomorrow's technology</p>
+        </header>
 
-      {error && <p style={{ color: 'red', marginTop: '20px' }}>{error}</p>}
-
-      {summary && (
-        <div style={{ marginTop: '30px', textAlign: 'left', padding: '20px', backgroundColor: '#f9f9f9', borderRadius: '8px', color: '#333' }}>
-          <h2>Summary Result:</h2>
-          <p style={{ whiteSpace: 'pre-wrap', lineHeight: '1.6' }}>{summary}</p>
+        <div className="editorial-panel">
+          <SummarizerForm onSummarize={handleSummarize} isLoading={isLoading} />
+          
+          {error && (
+            <div className="error-message">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              {error}
+            </div>
+          )}
         </div>
-      )}
-    </div>
+
+        <SummaryResult summary={summary} />
+      </div>
+    </>
   );
 }
 

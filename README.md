@@ -1,11 +1,10 @@
     # Lab 5: Tech Sustainability Summarizer
 
 ## Group Members
-* [Student 1 Name]
-* [Student 2 Name]
-* [Student 3 Name]
-* [Student 4 Name]
-* [Student 5 Name]
+* Smit Patel
+* Sanjeev Chauhan
+* Jingfu Luo
+
 
 ---
 
